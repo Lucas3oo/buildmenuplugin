@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: SCE Buildmenu Plug-in
+Bundle-SymbolicName: sce.buildmenuplugin;singleton:=true
+Bundle-Version: 1.0
+Bundle-Activator: sce.buildmenuplugin.BuildMenuPlugin
+Bundle-Vendor: Lucas Persson
+Require-Bundle: org.eclipse.core.resources,
+ org.eclipse.core.runtime,
+ org.eclipse.debug.core,
+ org.eclipse.debug.ui,
+ org.eclipse.jdt.core,
+ org.eclipse.jdt.junit,
+ org.eclipse.jdt.launching,
+ org.eclipse.ui,
+ org.apache.ant,
+ org.eclipse.ant.ui
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

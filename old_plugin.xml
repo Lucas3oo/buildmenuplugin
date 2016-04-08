@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.jdt.core.IJavaProject"
+            id="sce.buildmenuplugin.contribution1">
+         <menu
+               label="SCE"
+               path="group.build"
+               id="sce.buildmenuplugin.menu2">
+            <separator name="simple"/>
+            <separator name="java"/>
+         </menu>
+         <action
+               label="Generate Eclipse Classpath (sce:generate-classpath)"
+               helpContextId="sce.buildmenuplugin.GenerateEclipseClasspath"
+               tooltip="Generate Eclipse Classpath"
+               class="sce.buildmenuplugin.popup.actions.MavenGoalBaseAction"
+               menubarPath="sce.buildmenuplugin.menu2/java"
+               id="sce.buildmenuplugin.sce:generate-classpath">
+         </action>
+         <!--
+         <action
+               label="Generate FindBugs report"
+               helpContextId="sce.buildmenuplugin.RunFindBugs"
+               tooltip="Generate code coverage report with FindBugs"
+               class="sce.buildmenuplugin.popup.actions.MavenGoalBaseAction"
+               menubarPath="sce.buildmenuplugin.menu2/java"
+               id="sce.buildmenuplugin.findbugs xdoc:transform">
+         </action>
+         -->
+         <action
+               label="Generate code coverage report (clean emma:emma)"
+               helpContextId="sce.buildmenuplugin.RunEmma"
+               tooltip="Generate code coverage report with Emma"
+               class="sce.buildmenuplugin.popup.actions.MavenGoalBaseAction"
+               menubarPath="sce.buildmenuplugin.menu2/java"
+               id="sce.buildmenuplugin.clean emma:emma">
+         </action>
+         
+         <action
+               label="Generate Log Message Enums (sce:generate-enum)"
+               helpContextId="sce.buildmenuplugin.RunGenerateEnum"
+               tooltip="Generate log message enums"
+               class="sce.buildmenuplugin.popup.actions.MavenGoalBaseAction"
+               menubarPath="sce.buildmenuplugin.menu2/java"
+               id="sce.buildmenuplugin.sce:generate-enum">
+         </action>
+
+         
+         <action
+               label="Undeploy from SipAS (sce-sipas:undeploy)"
+               helpContextId="sce.buildmenuplugin.Undeploy"
+               tooltip="Undeploy SIP/J2EE module to SipAS"
+               class="sce.buildmenuplugin.popup.actions.MavenGoalBaseAction"
+               menubarPath="sce.buildmenuplugin.menu2/simple"
+               id="sce.buildmenuplugin.sce-sipas:undeploy">
+         </action>
+         <action
+               label="Deploy to SipAS (sce-sipas:deploy)"
+               helpContextId="sce.buildmenuplugin.Deploy"
+               tooltip="Deploy SIP/J2EE module to SipAS"
+               class="sce.buildmenuplugin.popup.actions.MavenGoalBaseAction"
+               menubarPath="sce.buildmenuplugin.menu2/simple"
+               id="sce.buildmenuplugin.sce-sipas:deploy">
+         </action>
+         <action
+               label="Clean (clean)"
+               helpContextId="sce.buildmenuplugin.Clean"
+               tooltip="Clean"
+               class="sce.buildmenuplugin.popup.actions.MavenGoalBaseAction"
+               menubarPath="sce.buildmenuplugin.menu2/simple"
+               id="sce.buildmenuplugin.clean">
+         </action>
+         <action
+               label="Install and Deploy to SipAS (install sce-sipas:deploy)"
+               helpContextId="sce.buildmenuplugin.InstallAndDeploy"
+               tooltip="Install to local maven repository and deploy to SipAS"
+               class="sce.buildmenuplugin.popup.actions.MavenGoalBaseAction"
+               menubarPath="sce.buildmenuplugin.menu2/simple"
+               id="sce.buildmenuplugin.install sce-sipas:deploy">
+         </action>
+         <action
+               label="Install (install)"
+               helpContextId="sce.buildmenuplugin.Install"
+               tooltip="Install to local maven repository"
+               class="sce.buildmenuplugin.popup.actions.MavenGoalBaseAction"
+               menubarPath="sce.buildmenuplugin.menu2/simple"
+               id="sce.buildmenuplugin.install">
+         </action>
+         <action
+               label="Package and Deploy to SipAS (package sce-sipas:deploy)"
+               helpContextId="sce.buildmenuplugin.BuildAndDeploy"
+               tooltip="Package"
+               class="sce.buildmenuplugin.popup.actions.MavenGoalBaseAction"
+               menubarPath="sce.buildmenuplugin.menu2/simple"
+               id="sce.buildmenuplugin.package sce-sipas:deploy">
+         </action>
+         <action
+               label="Package (package)"
+               helpContextId="sce.buildmenuplugin.Build"
+               tooltip="Package"
+               class="sce.buildmenuplugin.popup.actions.MavenGoalBaseAction"
+               menubarPath="sce.buildmenuplugin.menu2/simple"
+               id="sce.buildmenuplugin.package">
+         </action>
+      </objectContribution>
+      
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IProject"
+            id="sce.buildmenuplugin.contribution2">
+         <menu
+               label="SCE"
+               path="group.build"
+               id="sce.buildmenuplugin.menu2">
+            <separator name="simple"/>
+            <separator name="multiproject"/>
+            <separator name="nature"/>
+         </menu>
+         <action
+               label="Remove SCE multiproject nature"
+               helpContextId="sce.buildmenuplugin.RemoveMultiprojectNature"
+               tooltip=""
+               class="sce.buildmenuplugin.popup.actions.RemoveMultiprojectNatureAction"
+               menubarPath="sce.buildmenuplugin.menu2/nature"
+               id="sce.buildmenuplugin.removemultiprojectnature">
+               <enablement>
+                   <or>
+	                   <objectState name="projectNature" 
+	                                value="sce.scecoreplugin.multiprojectnature"/>
+	                   <objectState name="projectNature" 
+	                                value="com.hotsip.sce.scecoreplugin.multiprojectnature"/>
+                   </or>
+               </enablement>
+         </action>
+         <action
+               label="Add SCE multiproject nature"
+               helpContextId="sce.buildmenuplugin.AddMultiprojectNature"
+               tooltip=""
+               class="sce.buildmenuplugin.popup.actions.AddMultiprojectNatureAction"
+               menubarPath="sce.buildmenuplugin.menu2/nature"
+               id="sce.buildmenuplugin.addmultiprojectnature">
+               <enablement>
+                 <not>
+                   <or>
+	                   <objectState name="projectNature" 
+	                                value="sce.scecoreplugin.multiprojectnature"/>
+	                   <objectState name="projectNature" 
+	                                value="com.hotsip.sce.scecoreplugin.multiprojectnature"/>
+                   </or>
+                 </not>
+               </enablement>
+         </action>
+         <!--
+         <action
+               label="Generate announcement report"
+               helpContextId="sce.buildmenuplugin.GenerateAnnouncementReport"
+               tooltip="Generate announcement report from xdocs/changes.xml using maven announcement:generate."
+               class="sce.buildmenuplugin.popup.actions.MavenGoalBaseAction"
+               menubarPath="sce.buildmenuplugin.menu2/multiproject"
+               id="sce.buildmenuplugin.announcement:generate">
+               <enablement>
+                   <or>
+	                   <objectState name="projectNature" 
+	                                value="sce.scecoreplugin.multiprojectnature"/>
+	                   <objectState name="projectNature" 
+	                                value="com.hotsip.sce.scecoreplugin.multiprojectnature"/>
+                   </or>
+               </enablement>
+         </action>
+         <action
+               label="Generate PDF from sdocbooks"
+               helpContextId="sce.buildmenuplugin.GeneratePdfFromSdocbook"
+               tooltip="Generate PDF from sdocbook using maven sdocbook:generate-pdf. The sdocbooks must be in the sdocbooks folder. maven-sdocbook-plugin must have been installed."
+               class="sce.buildmenuplugin.popup.actions.MavenGoalBaseAction"
+               menubarPath="sce.buildmenuplugin.menu2/multiproject"
+               id="sce.buildmenuplugin.sdocbook:generate-pdf">
+               <enablement>
+                   <or>
+	                   <objectState name="projectNature" 
+	                                value="sce.scecoreplugin.multiprojectnature"/>
+	                   <objectState name="projectNature" 
+	                                value="com.hotsip.sce.scecoreplugin.multiprojectnature"/>
+                   </or>
+               </enablement>
+         </action>
+         <action
+               label="Generate Dependency Convergence Report"
+               helpContextId="sce.buildmenuplugin.GenerateDependencyConvergenceReport"
+               tooltip="Generate Dependency Convergence Report"
+               class="sce.buildmenuplugin.popup.actions.MavenGoalBaseAction"
+               menubarPath="sce.buildmenuplugin.menu2/multiproject"
+               id="sce.buildmenuplugin.multiproject:dependency-convergence-report xdoc:transform">
+               <enablement>
+                   <or>
+	                   <objectState name="projectNature" 
+	                                value="sce.scecoreplugin.multiprojectnature"/>
+	                   <objectState name="projectNature" 
+	                                value="com.hotsip.sce.scecoreplugin.multiprojectnature"/>
+                   </or>
+               </enablement>
+         </action>
+         <action
+		       label="Generate Eclipse Team Project Set"
+               helpContextId="sce.buildmenuplugin.GenerateEclipseTeamProjectSet"
+               tooltip="Generate Eclipse Team Project Set"
+               class="sce.buildmenuplugin.popup.actions.MavenGoalBaseAction"
+               menubarPath="sce.buildmenuplugin.menu2/multiproject"
+               id="sce.buildmenuplugin.sce-eclipse:generate-project-set">
+               <enablement>
+                   <or>
+	                   <objectState name="projectNature" 
+	                                value="sce.scecoreplugin.multiprojectnature"/>
+	                   <objectState name="projectNature" 
+	                                value="com.hotsip.sce.scecoreplugin.multiprojectnature"/>
+                   </or>
+               </enablement>
+         </action>
+         -->
+         <action
+               label="Generate Eclipse Classpath (sce:generate-classpath)"
+               helpContextId="sce.buildmenuplugin.GenerateEclipseClasspath"
+               tooltip="Generate Eclipse Classpath"
+               class="sce.buildmenuplugin.popup.actions.MavenGoalBaseAction"
+               menubarPath="sce.buildmenuplugin.menu2/multiproject"
+               id="sce.buildmenuplugin.sce:generate-classpath">
+               <enablement>
+                   <or>
+	                   <objectState name="projectNature" 
+	                                value="sce.scecoreplugin.multiprojectnature"/>
+	                   <objectState name="projectNature" 
+	                                value="com.hotsip.sce.scecoreplugin.multiprojectnature"/>
+                   </or>
+               </enablement>
+         </action>
+         
+         <action
+               label="Undeploy from SipAS (sce-sipas:undeploy)"
+               helpContextId="sce.buildmenuplugin.Undeploy"
+               tooltip="Undeploy SIP/J2EE module to SipAS"
+               class="sce.buildmenuplugin.popup.actions.MavenGoalBaseAction"
+               menubarPath="sce.buildmenuplugin.menu2/simple"
+               id="sce.buildmenuplugin.sce-sipas:undeploy">
+               <enablement>
+                 <not>
+                   <or>
+	                   <objectState name="projectNature" 
+	                                value="sce.scecoreplugin.multiprojectnature"/>
+	                   <objectState name="projectNature" 
+	                                value="com.hotsip.sce.scecoreplugin.multiprojectnature"/>
+                   </or>
+                 </not>
+               </enablement>
+         </action>
+         <action
+               label="Deploy to SipAS (sce-sipas:deploy)"
+               helpContextId="sce.buildmenuplugin.Deploy"
+               tooltip="Deploy SIP/J2EE module to SipAS"
+               class="sce.buildmenuplugin.popup.actions.MavenGoalBaseAction"
+               menubarPath="sce.buildmenuplugin.menu2/simple"
+               id="sce.buildmenuplugin.sce-sipas:deploy">
+               <enablement>
+                 <not>
+                   <or>
+	                   <objectState name="projectNature" 
+	                                value="sce.scecoreplugin.multiprojectnature"/>
+	                   <objectState name="projectNature" 
+	                                value="com.hotsip.sce.scecoreplugin.multiprojectnature"/>
+                   </or>
+                 </not>
+               </enablement>
+         </action>
+         <action
+               label="Clean (clean)"
+               helpContextId="sce.buildmenuplugin.Clean"
+               tooltip="Clean"
+               class="sce.buildmenuplugin.popup.actions.MavenGoalBaseAction"
+               menubarPath="sce.buildmenuplugin.menu2/simple"
+               id="sce.buildmenuplugin.clean">
+         </action>
+         <action
+               label="Install and Deploy to SipAS (install sce-sipas:deploy)"
+               helpContextId="sce.buildmenuplugin.InstallAndDeploy"
+               tooltip="Install to local maven repository and deploy to SipAS"
+               class="sce.buildmenuplugin.popup.actions.MavenGoalBaseAction"
+               menubarPath="sce.buildmenuplugin.menu2/simple"
+               id="sce.buildmenuplugin.install sce-sipas:deploy">
+               <enablement>
+                 <not>
+                   <or>
+	                   <objectState name="projectNature" 
+	                                value="sce.scecoreplugin.multiprojectnature"/>
+	                   <objectState name="projectNature" 
+	                                value="com.hotsip.sce.scecoreplugin.multiprojectnature"/>
+                   </or>
+                 </not>
+               </enablement>
+         </action>
+         <action
+               label="Install (install)"
+               helpContextId="sce.buildmenuplugin.Install"
+               tooltip="Install to local maven repository"
+               class="sce.buildmenuplugin.popup.actions.MavenGoalBaseAction"
+               menubarPath="sce.buildmenuplugin.menu2/simple"
+               id="sce.buildmenuplugin.install">
+         </action>
+         <action
+               label="Package and Deploy to SipAS (package sce-sipas:deploy)"
+               helpContextId="sce.buildmenuplugin.BuildAndDeploy"
+               tooltip="Package"
+               class="sce.buildmenuplugin.popup.actions.MavenGoalBaseAction"
+               menubarPath="sce.buildmenuplugin.menu2/simple"
+               id="sce.buildmenuplugin.package sce-sipas:deploy">
+               <enablement>
+                 <not>
+                   <or>
+	                   <objectState name="projectNature" 
+	                                value="sce.scecoreplugin.multiprojectnature"/>
+	                   <objectState name="projectNature" 
+	                                value="com.hotsip.sce.scecoreplugin.multiprojectnature"/>
+                   </or>
+                 </not>
+               </enablement>
+         </action>
+         <action
+               label="Package (package)"
+               helpContextId="sce.buildmenuplugin.Build"
+               tooltip="Package"
+               class="sce.buildmenuplugin.popup.actions.MavenGoalBaseAction"
+               menubarPath="sce.buildmenuplugin.menu2/simple"
+               id="sce.buildmenuplugin.package">
+         </action>
+      </objectContribution>
+
+      <objectContribution
+            objectClass="org.eclipse.ui.IWorkingSet"
+            id="sce.buildmenuplugin.contribution3">
+         <menu
+               label="SCE"
+               id="sce.buildmenuplugin.menu3">
+            <separator name="simple"/>
+            <separator name="multiproject"/>
+            <separator name="nature"/>
+         </menu>
+         <action
+               label="Clean (clean)"
+               helpContextId="sce.buildmenuplugin.Clean"
+               tooltip="Clean"
+               class="sce.buildmenuplugin.popup.actions.MavenGoalBaseAction"
+               menubarPath="sce.buildmenuplugin.menu3/simple"
+               id="sce.buildmenuplugin.clean">
+         </action>
+         <action
+               label="Install (install)"
+               helpContextId="sce.buildmenuplugin.Install"
+               tooltip="Install to local maven repository"
+               class="sce.buildmenuplugin.popup.actions.MavenGoalBaseAction"
+               menubarPath="sce.buildmenuplugin.menu3/simple"
+               id="sce.buildmenuplugin.install">
+         </action>
+         <action
+               label="Package (package)"
+               helpContextId="sce.buildmenuplugin.Build"
+               tooltip="Package"
+               class="sce.buildmenuplugin.popup.actions.MavenGoalBaseAction"
+               menubarPath="sce.buildmenuplugin.menu3/simple"
+               id="sce.buildmenuplugin.package">
+         </action>
+      
+      </objectContribution>
+      
+      
+      
+   </extension>
+
+<!--
+   <extension point="org.eclipse.debug.ui.launchShortcuts">
+      <shortcut
+            label="JUnit Test (in container)"
+            icon="icons/julaunch.gif"
+            helpContextId="sce.buildmenuplugin.launch.JUnitInContainerLaunchShortcut"
+            class="sce.buildmenuplugin.launch.JUnitInContainerLaunchShortcut"
+            modes="run"
+            id="sce.buildmenuplugin.launch.JUnitInContainerLaunchShortcut">
+         <contextualLaunch>
+            <enablement>
+               <with variable="selection">
+                  <count value="1"/>
+                  <iterate>
+                     <adapt type="org.eclipse.jdt.core.IJavaElement">
+                                <test property="org.eclipse.jdt.core.isInJavaProject"/>
+                                <test property="org.eclipse.jdt.core.hasTypeOnClasspath" value="junit.framework.Test"/>
+                                <test property="org.eclipse.jdt.junit.canLaunchAsJUnit" forcePluginActivation="true"/>
+                             </adapt>
+                          </iterate>
+               </with>
+            </enablement>
+         </contextualLaunch>
+         <configurationType
+               id="org.eclipse.jdt.junit.launchconfig">
+         </configurationType>
+         <description
+               description="Run in container"
+               mode="run">
+         </description>   
+      </shortcut>
+   </extension>
+-->
+
+<!--
+   <extension point="org.eclipse.debug.ui.launchShortcuts">
+      <shortcut
+            label="JUnit Test (in container)"
+            icon="icons/julaunch.gif"
+            helpContextId="sce.buildmenuplugin.launch.JUnitInContainerLaunchShortcut"
+            class="sce.buildmenuplugin.launch.JUnitInContainerLaunchShortcut"
+            modes="run, debug"
+            id="sce.buildmenuplugin.launch.JUnitInContainerLaunchShortcut">
+         <contextualLaunch>
+            <enablement>
+               <with
+                     variable="selection">
+                  <count
+                        value="1">
+                  </count>
+                  <iterate>
+                    <or>
+                        <test property="org.eclipse.debug.ui.matchesPattern" value="*.java"/>
+                        <test property="org.eclipse.debug.ui.matchesPattern" value="*.class"/>
+                        <instanceof value="org.eclipse.jdt.core.IJavaElement"/>
+                    </or>
+                    <test property="org.eclipse.jdt.junit.isTest"/>
+                  </iterate>
+               </with>
+            </enablement>
+         </contextualLaunch>
+         <perspective
+               id="org.eclipse.jdt.ui.JavaPerspective">
+         </perspective>
+         <perspective
+               id="org.eclipse.jdt.ui.JavaHierarchyPerspective">
+         </perspective>
+         <perspective
+               id="org.eclipse.jdt.ui.JavaBrowsingPerspective">
+         </perspective>
+         <perspective
+               id="org.eclipse.debug.ui.DebugPerspective">
+         </perspective>
+      </shortcut>
+   </extension>
+-->
+
+<!--
+  <extension
+       point="org.eclipse.ui.preferencePages">
+    <page
+          name="SCE"
+          class="sce.buildmenuplugin.preference.MainPreferencePage"
+          id="sce.buildmenuplugin.preference.MainPreferencePage">
+    </page>
+  </extension>
+  <extension
+        id="sce.buildmenuplugin.preference.PreferenceInitializer"
+        name="sce.buildmenuplugin.preference.PreferenceInitializer"
+        point="org.eclipse.core.runtime.preferences">
+        <initializer class="sce.buildmenuplugin.preference.PreferenceInitializer">
+        </initializer>
+  </extension>
+-->
+   
+  <extension id="multiprojectnature"
+                name="SCE Multiproject nature"
+                point="org.eclipse.core.resources.natures">
+                <runtime>
+                        <run
+                                class="sce.scecoreplugin.MultiprojectNature" />
+                </runtime>
+  </extension>
+  <extension id="basenature" name="SCE Base nature"
+                point="org.eclipse.core.resources.natures">
+                <runtime>
+                        <run class="sce.scecoreplugin.BaseNature" />
+                </runtime>
+  </extension>
+
+</plugin>

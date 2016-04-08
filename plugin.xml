@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.jdt.core.IJavaProject"
+            id="sce.buildmenuplugin.contribution1">
+         <menu
+               label="SCE"
+               path="group.build"
+               id="sce.buildmenuplugin.menu">
+            <separator name="simple"/>
+            <separator name="java"/>
+         </menu>
+         <action
+               label="Clean (clean)"
+               helpContextId="sce.buildmenuplugin.Clean"
+               tooltip="Clean"
+               class="sce.buildmenuplugin.popup.actions.GradleTaskBaseAction"
+               menubarPath="sce.buildmenuplugin.menu/simple"
+               id="sce.buildmenuplugin.clean">
+         </action>
+         
+         <action
+               label="Build and build all proj that depend on it (buildDependents)"
+               helpContextId="sce.buildmenuplugin.Clean"
+               tooltip="Clean"
+               class="sce.buildmenuplugin.popup.actions.GradleTaskBaseAction"
+               menubarPath="sce.buildmenuplugin.menu/simple"
+               id="sce.buildmenuplugin.buildDependents">
+         </action>         
+         
+         
+         <action
+               label="Install (install)"
+               helpContextId="sce.buildmenuplugin.Install"
+               tooltip="Install to local maven repository"
+               class="sce.buildmenuplugin.popup.actions.GradleTaskBaseAction"
+               menubarPath="sce.buildmenuplugin.menu/simple"
+               id="sce.buildmenuplugin.install">
+         </action>
+         <action
+               label="Build (build)"
+               helpContextId="sce.buildmenuplugin.Build"
+               tooltip="Package"
+               class="sce.buildmenuplugin.popup.actions.GradleTaskBaseAction"
+               menubarPath="sce.buildmenuplugin.menu/simple"
+               id="sce.buildmenuplugin.build">
+         </action>
+      </objectContribution>
+      
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IProject"
+            id="sce.buildmenuplugin.contribution2">
+         <menu
+               label="SCE"
+               path="group.build"
+               id="sce.buildmenuplugin.menu">
+            <separator name="simple"/>
+         </menu>
+         
+         <action
+               label="Clean (clean)"
+               helpContextId="sce.buildmenuplugin.Clean"
+               tooltip="Clean"
+               class="sce.buildmenuplugin.popup.actions.GradleTaskBaseAction"
+               menubarPath="sce.buildmenuplugin.menu/simple"
+               id="sce.buildmenuplugin.clean">
+         </action>
+         <action
+               label="Install (install)"
+               helpContextId="sce.buildmenuplugin.Install"
+               tooltip="Install to local maven repository"
+               class="sce.buildmenuplugin.popup.actions.GradleTaskBaseAction"
+               menubarPath="sce.buildmenuplugin.menu/simple"
+               id="sce.buildmenuplugin.install">
+         </action>
+      </objectContribution>
+      
+   </extension>
+
+</plugin>
